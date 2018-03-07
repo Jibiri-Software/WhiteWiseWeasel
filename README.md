@@ -1,4 +1,4 @@
-# We are a White Wise Weasel!
+# We are White Wise Weasel!
 
 
 
