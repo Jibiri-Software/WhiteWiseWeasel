@@ -1,6 +1,6 @@
 # We are White Wise Weasel!!!!!!!!!!!!!
 
-####1. Description
+#### 1. Description
 Our project is oriented to develop a navigator plugin and a webpage. The main idea is to protect our users from frauds, hoaxes and any kind of misleading warning. Users will be the ones to provide feedback to the app, using a system of points. Once the content has been reported a determined number of times, it will move to the page mods, who will determine if its malicious or not.
 
 We are also aiming to unravel scam companies, based on the feedback provided with the system of points.
@@ -18,7 +18,7 @@ We could also count the resources some companies spent in storage and analyzing 
 
 *The idea of the skin is to change the way the webpage and reports page looks, making it feel like you are battling while reporting a hoax, we would rename some of the parameters like the trust factors being your damage, the validity of a post being its health, and once it reaches 0 (a threshold we determine  before checking it), a mod/admin will check it and all the sources and confirm if it is fake or not.
 
-####2.- Viability analysis
+#### 2.- Viability analysis
 
 The project would have an slow beginning, due to the lack of a great number of mods and admins, but it will become more efficient eventually.
 
@@ -36,11 +36,11 @@ We thought to demand for a mention to the original author of the content too. Bu
 
 Lastly, we should mention that in some social networks as Reddit or Twitter, there are already users that let the community know which content is true and which is not. The thing is that the information is sometimes repeated by different users and it’s hard to warn all the community.This is what we want to provide, unification.
 
-####3.- Requirements
+#### 3.- Requirements
 
 (to do in a near future)
 
-####4.- Planning
+#### 4.- Planning
 
 We discussed the differents ways of developing a project without really reaching a consensus. Until now, the spiral model is the one more appealing to us. Time is our major enemy so in case we couldn’t finish the project we would have some part done. With a non incremental model, we risk all or nothing, which would damage the viability of the project.
 
