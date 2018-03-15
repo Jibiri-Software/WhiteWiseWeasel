@@ -14,9 +14,7 @@ Users will have a “trust factor” that will be based on the efficiency rate o
 
 We could also count the resources some companies spent in storage and analyzing of spam and hoaxes. 
 
-  *The idea of the skin is to change that every user has a points of attack, and so, posts have health points. If you have proven to be an active and helpful user, you’ll deal more damage, and so, your opinion is very valuable. Once the hp is taken down to 0, admins and mods will personally tell if that is fake or not. (Changing)
-
-*The idea of the skin is to change the way the webpage and reports page looks, making it feel like you are battling while reporting a hoax, we would rename some of the parameters like the trust factors being your damage, the validity of a post being its health, and once it reaches 0 (a threshold we determine  before checking it), a mod/admin will check it and all the sources and confirm if it is fake or not.
+*The idea of the skin is to change the way the webpage and reports page looks, making it feel like you are battling while reporting a hoax, we would rename some of the parameters like the trust factors being your damage, the validity of a post being its health, and once it reaches 0 (a threshold we determine before checking it), a mod/admin will check it and all the sources and confirm wether it is fake or not.
 
 #### 2.- Viability analysis
 
