@@ -36,10 +36,20 @@ Lastly, we should mention that in some social networks as Reddit or Twitter, the
 
 #### 3.- Requirements
 
-(to do in a near future)
+Our project must provide a data structure to store things without classification, another one for the ones classified as a hoax and the ones that are not.
+
+It will need to have an user friendly interface so our users can report, or vote on the veracity of unclassified hoaxes.
+
+Having categories for the lists of hoaxes, so the users can be aware of what they need the most
+(to-do for a future edition).
+
 
 #### 4.- Planning
 
 We discussed the differents ways of developing a project without really reaching a consensus. Until now, the spiral model is the one more appealing to us. Time is our major enemy so in case we couldn’t finish the project we would have some part done. With a non incremental model, we risk all or nothing, which would damage the viability of the project.
 
-Task: In the next meeting each member would decide which is the model that he prefers and will defend in front of the rest. Then we will decide all together which is the best one.
+After a second meeting we have decided to approach the project with a spiral development process. We think this model fits better with our view of the project and allow us to fix the mistakes as soon as they appear.
+
+The first element of the project will be the database, as most actions will need it to work.
+Then we can begin to think about tools like the verification system, that would have a simple GUI at first which we can make evolve over time.
+
