@@ -1,7 +1,9 @@
 # We are White Wise Weasel!!!!!!!!!!!!!
 
 #### 1. Description
-Our project is oriented to develop a navigator plugin and a webpage. The main idea is to protect our users from frauds, hoaxes and any kind of misleading warning. Users will be the ones to provide feedback to the app, using a system of points. Once the content has been reported a determined number of times, it will move to the page mods, who will determine if its malicious or not.
+PROFESSOR NOTE: Make sure that you always define first the goal of the system and then the indended implementation. Otherwise the document becomes hard to understand and to follow. Avoid implementation details, except for those that represent key aspects of the proposed system. Another important aspect is organization. Please try to think on the structuring (even if it is invisible) of the document. Organize the content in a logical way so that it presents the information in a coherent and easy-to-follow way.
+
+Our project is oriented to develop a solution to protect users from malicious advertisements. Our solution will be implemented as a plugin for a web browswe and a webpage. The main idea is to protect our users from frauds, hoaxes and any kind of misleading warning. Users will be the ones to provide feedback to the app, using a system of points. Once the content has been reported a determined number of times, it will move to the page mods, who will determine if its malicious or not.
 
 We are also aiming to unravel scam companies, based on the feedback provided with the system of points.
 
