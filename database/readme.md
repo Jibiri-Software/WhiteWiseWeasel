@@ -8,4 +8,4 @@
 
 In windows you need to run the mysql commands from the bin folder inside your mysql installation folder. i.e. `C:/Program Files/MySQL/MySQL Server 15.1/bin`
 
-![Pic](/tables/tables.png)
+![Pic](/tables/tables.png?raw=true "Title")
