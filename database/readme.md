@@ -1,6 +1,6 @@
-# Requires MySQL 15.1
+# Can be imported on any sql database manager
 
-## Importing the database into a system
+## Importing the database into a system with MySQL
 
 1. Launch mysql and `create database wwwDatabase;`
 2. Download the wwwDatabaseDump.sql file
@@ -8,4 +8,4 @@
 
 In windows you need to run the mysql commands from the bin folder inside your mysql installation folder. i.e. `C:/Program Files/MySQL/MySQL Server 15.1/bin`
 
-![Pic](/tables/tables.png?raw=true "Title")
+![ ](https://github.com/Jibiri-Software/WhiteWiseWeasel/blob/master/database/tables/tables.png?raw=true "Tables on MySQL")
