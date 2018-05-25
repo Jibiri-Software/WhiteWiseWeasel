@@ -28,10 +28,11 @@ CREATE TABLE `scam` (
   `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dateadded` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idauthor` (`idauthor`),
   CONSTRAINT `scam_ibfk_1` FOREIGN KEY (`idauthor`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +41,7 @@ CREATE TABLE `scam` (
 
 LOCK TABLES `scam` WRITE;
 /*!40000 ALTER TABLE `scam` DISABLE KEYS */;
+INSERT INTO `scam` VALUES (1,1,'How to PASS Software Enginnering in 5 easy steps','This is a set of obvious points about how to pass Software Engineering','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(2,4,'16 tragedias ocurridas al tomar SELFIES','La numero 10 te hara llorar!','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(3,9,'Como hacer nachos con queso','Receta original de *Cocina con Nacho!*','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(4,4,'How to PASS Operating Systems in 5 easy steps','Pass the exams :D','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(5,6,'How to PASS Operating Systems in 5 easy steps!','Pass the exams :D','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25');
 /*!40000 ALTER TABLE `scam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +56,7 @@ CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +65,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Pepe'),(2,'Salmeron'),(3,'Javi'),(4,'Martin'),(5,'Dani'),(6,'Cris'),(7,'Dario'),(8,'Luis'),(9,'Nacho');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-23 14:12:23
+-- Dump completed on 2018-05-25 13:56:51
