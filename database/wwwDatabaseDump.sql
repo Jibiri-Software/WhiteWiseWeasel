@@ -41,7 +41,7 @@ CREATE TABLE `scam` (
 
 LOCK TABLES `scam` WRITE;
 /*!40000 ALTER TABLE `scam` DISABLE KEYS */;
-INSERT INTO `scam` VALUES (1,1,'How to PASS Software Enginnering in 5 easy steps','This is a set of obvious points about how to pass Software Engineering','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(2,4,'16 tragedias ocurridas al tomar SELFIES','La numero 10 te hara llorar!','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(3,9,'Como hacer nachos con queso','Receta original de *Cocina con Nacho!*','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(4,4,'How to PASS Operating Systems in 5 easy steps','Pass the exams :D','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(5,6,'How to PASS Operating Systems in 5 easy steps!','Pass the exams :D','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25');
+INSERT INTO `scam` VALUES (1,1,'How to PASS Software Enginnering in 5 easy steps','This is a set of obvious points about how to pass Software Engineering','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-07'),(2,4,'16 tragedias ocurridas al tomar SELFIES','La numero 10 te hara llorar!','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(3,9,'Como hacer nachos con queso','Receta original de *Cocina con Nacho!*','https://github.com/Jibiri-Software/WhiteWiseWeasel','1977-07-07'),(4,4,'How to PASS Operating Systems in 5 easy steps','Pass the exams :D','https://github.com/Jibiri-Software/WhiteWiseWeasel','2018-05-25'),(5,6,'How to PASS Operating Systems in 5 easy steps!','Pass the exams :D','https://github.com/Jibiri-Software/WhiteWiseWeasel','1991-08-12');
 /*!40000 ALTER TABLE `scam` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-25 13:56:51
+-- Dump completed on 2018-05-25 16:45:32
