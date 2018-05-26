@@ -3,3 +3,5 @@
 .settings/
 .classpath
 .project
+out
+mysql-connector-java-5.1.46
