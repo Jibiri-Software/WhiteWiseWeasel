@@ -10,12 +10,15 @@ public class GUIController implements ActionListener {
 	
 	private BDController bd;
 	private View v;
+	private int totalScams;
 	
 	public GUIController(BDController bdc, View view) {
 		bd = bdc;
 		v = view;
 		
-		printResults(bd.allData());
+		String[][] data = bd.allData();
+		totalScams = data[0].length;
+		printResults(data);
 	}
 
 	@Override
@@ -38,19 +41,22 @@ public class GUIController implements ActionListener {
 				v.clearOrderOptions();
 				String msg = v.getMessage();
 				
-				
+				String[][] data;
 				if (author) {
 								
-					printResults(bd.seachForAuthor(msg, desc));
+					data = bd.seachForAuthor(msg, desc);
 					
 				} else if (!msg.equals("")) {
 					
-					printResults(bd.searchForCoincidence(msg, desc, asc));
+					data = bd.searchForCoincidence(msg, desc, asc);
 				
 				} else {
 					
-					printResults(bd.allData());
+					data = bd.allData();
 				}
+				
+				printResults(data);
+				v.setResultLabel(data[0].length, totalScams);
 				
 			}
 			

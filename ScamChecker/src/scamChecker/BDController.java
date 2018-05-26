@@ -9,8 +9,8 @@ public class BDController {
 	
 			
 	private String url = "jdbc:mysql://localhost:3306/wwwDatabase";
-	private String username = "root";		//INTRODUCE USER OF LOCAL MYSQL
-	private String password = "javier98"; 	//INTRODUCE PASSWORD OF LOCAL MYSQL
+	private String username;	
+	private String password;	
 	
 	private Connection conn;
 		
@@ -24,7 +24,9 @@ public class BDController {
 		}
 	}
 	
-	public BDController() {
+	public BDController(String user, String pass) {
+		this.username = user;
+		this.password = pass;		
 		try {
 			String connectionUrl = url;
 			conn = DriverManager.getConnection(connectionUrl, username, password);
@@ -56,7 +58,7 @@ public class BDController {
 		
 		checkInjection(message);
 		
-		message = " " + message + " ";
+		message = checkExactSearch(message);
 		
 		String query = "select s.title, u.username, s.description, s.url, s.dateadded, ( "
 							+ "select (((length(title) - length(replace(upper(title),'" + message + "','')))/length('" + message + "'))*3 + (((length(description) - length(replace(upper(description),'" + message + "','')))/length('" + message + "')))) as numTimes "
@@ -81,6 +83,7 @@ public class BDController {
 		return retrieveData(query);
 	}
 	
+
 	public String[][] seachForAuthor(String user, boolean descendentOrder) throws ExceptionInjection {
 		
 		checkInjection(user);
@@ -102,7 +105,7 @@ public class BDController {
 					
 		try ( Statement stmt = conn.createStatement() ) {
 			
-			ResultSet rset = stmt.executeQuery(query);
+			ResultSet rset = stmt.executeQuery(query);			
 			
 			int numRows = numberOfRows(rset);
 			result = new String[Columns.values().length][numRows];
@@ -124,6 +127,17 @@ public class BDController {
 		
 		return result;
 	}
+	
+	private String checkExactSearch(String s) {
+		
+		if (s.startsWith("\"") && s.endsWith("\"")) {
+			
+			s = s.replaceAll("\"", " ");
+		}
+		
+		return s;
+	}
+
 	
 	private String addOrder(String query, boolean descendentOrder) {
 		
@@ -156,7 +170,7 @@ public class BDController {
 	private void checkInjection(String s) throws ExceptionInjection {
 				
 		if (s.contains(";")) {
-			throw new ExceptionInjection("Sorry, we don't accept searches with character ';'");
+			throw new ExceptionInjection("Sorry, we don't accept searches with character ;");
 		}
 		
 	}

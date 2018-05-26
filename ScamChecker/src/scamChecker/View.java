@@ -37,6 +37,8 @@ public class View extends JFrame {
 		
 	private JScrollPane scroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	private JTextArea results = new JTextArea(25,50);
+	
+	private JLabel labelResults = new JLabel();
 		
 	public View() {
 		
@@ -77,7 +79,12 @@ public class View extends JFrame {
 		results.setEditable(false);
 		results.setLineWrap(true);
 		scroll.setViewportView(results);
-
+		
+		
+		// BOTTOM
+		
+		JPanel bottom = new JPanel(new FlowLayout());
+		bottom.add(labelResults);
 		
 		
 		// CREATE LAYOUT
@@ -86,9 +93,10 @@ public class View extends JFrame {
 		setTitle("Jibiri Scam Checker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
-		setLayout(new BorderLayout());
+		setLayout(new BorderLayout(5,5));
 		add(top, BorderLayout.PAGE_START);
 		add(scroll, BorderLayout.CENTER);
+		add(bottom, BorderLayout.PAGE_END);
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);	
@@ -129,5 +137,8 @@ public class View extends JFrame {
 	}
 	public void clearOrderOptions() {
 		selectOrder.clearSelection();
+	}
+	public void setResultLabel(int results, int rows) {
+		labelResults.setText(results + " scams found out of " + rows + " registered");
 	}
 }
