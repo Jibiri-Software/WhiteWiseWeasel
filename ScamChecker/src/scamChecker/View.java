@@ -138,7 +138,7 @@ public class View extends JFrame {
 	public void clearOrderOptions() {
 		selectOrder.clearSelection();
 	}
-	public void setResultLabel(int results, int rows) {
-		labelResults.setText(results + " scams found out of " + rows + " registered");
+	public void setResultLabel(int results, int total, long time) {
+		labelResults.setText(results + " scams found out of " + total + " registered (" + time + " milliseconds)");
 	}
 }

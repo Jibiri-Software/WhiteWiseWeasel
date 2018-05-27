@@ -2,6 +2,7 @@ package scamChecker;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import scamChecker.BDController.Columns;
 import scamChecker.BDController.ExceptionInjection;
@@ -41,22 +42,27 @@ public class GUIController implements ActionListener {
 				v.clearOrderOptions();
 				String msg = v.getMessage();
 				
+				long start;
+				long end;
+				
+				
 				String[][] data;
 				if (author) {
-								
+					start = new Date().getTime();			
 					data = bd.seachForAuthor(msg, desc);
-					
+					end = new Date().getTime();
 				} else if (!msg.equals("")) {
-					
+					start = new Date().getTime();
 					data = bd.searchForCoincidence(msg, desc, asc);
-				
+					end = new Date().getTime();
 				} else {
-					
+					start = new Date().getTime();
 					data = bd.allData();
+					end = new Date().getTime();
 				}
 				
 				printResults(data);
-				v.setResultLabel(data[0].length, totalScams);
+				v.setResultLabel(data[0].length, totalScams, end - start);
 				
 			}
 			
