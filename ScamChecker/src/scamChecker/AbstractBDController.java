@@ -1,28 +1,43 @@
 package scamChecker;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public abstract class AbstractBDController {
 
-    public class ExceptionInjection extends Exception {
-        private static final long serialVersionUID = 1L;
-
-        public ExceptionInjection(String msg) {
-            super(msg);
-        }
-    }
+    protected Connection conn;
 
 
-    public abstract void initialize(String user, String Password);
+
+    /*
+        This method stablish a connection with the database
+        and saves the connection in the Connection conn variable
+     */
+    public abstract void initialize();
+
+    /*
+        Returns a 2D-Array with all information from the database
+     */
     public abstract String[][] allData();
+
+    /*
+        Returns a 2D-Array with all information from the database that contains @param message
+        If both booleans are off it should use a heuristic to order the results, only one of them
+        should be set to true at once. This will order the results by date in said order
+     */
     public abstract String[][] searchForCoincidence(String message, boolean descendentOrder, boolean ascendentOrder) throws ExceptionInjection;
+
+    /*
+        Returns a 2D-Array with all information from the database from @param user
+        Can only be ordered by ascendant or descendant by date
+     */
+    public abstract String[][] seachForAuthor(String user, boolean descendentOrder) throws ExceptionInjection;
 
 
     protected String checkExactSearch(String s) {
 
         if (s.startsWith("\"") && s.endsWith("\"")) {
-
             s = s.replaceAll("\"", " ");
         }
 
@@ -64,5 +79,16 @@ public abstract class AbstractBDController {
             throw new ExceptionInjection("Sorry, we don't accept searches with character ;");
         }
 
+    }
+
+    /*
+        Exception to be thrown if there is any attempt for SQL Injection
+    */
+    public class ExceptionInjection extends Exception {
+        private static final long serialVersionUID = 1L;
+
+        public ExceptionInjection(String msg) {
+            super(msg);
+        }
     }
 }

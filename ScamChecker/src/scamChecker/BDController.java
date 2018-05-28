@@ -11,8 +11,7 @@ public class BDController extends AbstractBDController{
 	private String url = "jdbc:mysql://localhost:3306/wwwDatabase";
 	private String username;	
 	private String password;	
-	
-	private Connection conn;
+
 		
 	public enum Columns { TITLE, USERNAME, DATE, DESCRIPTION, URL }
 	
@@ -21,11 +20,11 @@ public class BDController extends AbstractBDController{
 	public BDController(String user, String pass) {
 		this.username = user;
 		this.password = pass;		
-		initialize(user, pass);
+		initialize();
 	}
 
 
-	public void initialize(String user, String password) {
+	public void initialize() {
 		try {
 			String connectionUrl = url;
 			conn = DriverManager.getConnection(connectionUrl, username, password);
