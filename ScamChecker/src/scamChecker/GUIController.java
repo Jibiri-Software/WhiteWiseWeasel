@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 import scamChecker.BDController.Columns;
-import scamChecker.BDController.ExceptionInjection;
+import scamChecker.AbstractBDController.ExceptionInjection;
 
 public class GUIController implements ActionListener {
 	

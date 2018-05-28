@@ -3,7 +3,7 @@ package scamChecker;
 public class Driver {
 	
 	public static void main(String[] args) {
-		
+
 		if (args.length < 2) {
 			System.err.println("Pass as parameters MySQL user and password");
 			System.exit(1);

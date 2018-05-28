@@ -5,7 +5,7 @@ import java.sql.*;
 
 
 
-public class BDController {
+public class BDController extends AbstractBDController{
 	
 			
 	private String url = "jdbc:mysql://localhost:3306/wwwDatabase";
@@ -16,30 +16,28 @@ public class BDController {
 		
 	public enum Columns { TITLE, USERNAME, DATE, DESCRIPTION, URL }
 	
-	public class ExceptionInjection extends Exception {
-		private static final long serialVersionUID = 1L;
 
-		public ExceptionInjection(String msg) {
-			super(msg);
-		}
-	}
 	
 	public BDController(String user, String pass) {
 		this.username = user;
 		this.password = pass;		
+		initialize(user, pass);
+	}
+
+
+	public void initialize(String user, String password) {
 		try {
 			String connectionUrl = url;
 			conn = DriverManager.getConnection(connectionUrl, username, password);
 			System.out.println("Conectado.");
-		} 
+		}
 		catch (SQLException ex) {
 			// handle any errors
-		    System.out.println("SQLException: " + ex.getMessage());
-		    System.out.println("SQLState: " + ex.getSQLState());
-		    System.out.println("VendorError: " + ex.getErrorCode());
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
 		}
 	}
-	
 
 	public String[][] allData() {
 		
@@ -128,51 +126,6 @@ public class BDController {
 		return result;
 	}
 	
-	private String checkExactSearch(String s) {
-		
-		if (s.startsWith("\"") && s.endsWith("\"")) {
-			
-			s = s.replaceAll("\"", " ");
-		}
-		
-		return s;
-	}
 
-	
-	private String addOrder(String query, boolean descendentOrder) {
-		
-		
-		query = query.concat(" order by dateadded");
-		
-		if (descendentOrder) {
-			query = query.concat(" desc");
-		}
-		
-		return query;
-	}
-	
-	private int numberOfRows(ResultSet rset) {
-		
-		int total = 0;
-		try {			
-			rset.last();
-			total = rset.getRow();
-			rset.beforeFirst();
-			
-		} catch (SQLException ex) {
-			
-			System.out.println("SQLException: " + ex.getMessage());
-		}		
-		return total;
-	}
-	
-		
-	private void checkInjection(String s) throws ExceptionInjection {
-				
-		if (s.contains(";")) {
-			throw new ExceptionInjection("Sorry, we don't accept searches with character ;");
-		}
-		
-	}
 		
 }
