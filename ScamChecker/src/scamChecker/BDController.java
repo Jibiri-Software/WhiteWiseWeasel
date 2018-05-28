@@ -114,6 +114,7 @@ public class BDController extends AbstractBDController{
 				result[Columns.DATE.ordinal()][i] = rset.getString("dateadded");
 				result[Columns.DESCRIPTION.ordinal()][i] = rset.getString("description");
 				result[Columns.URL.ordinal()][i] = rset.getString("url");
+				if (result[Columns.URL.ordinal()][i] == null) result[Columns.URL.ordinal()][i] = "No URL provided";
 				i++;
 			}
 			
