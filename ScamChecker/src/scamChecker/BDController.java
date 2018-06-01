@@ -81,7 +81,7 @@ public class BDController extends AbstractBDController{
 	}
 	
 
-	public String[][] seachForAuthor(String user, boolean descendentOrder) throws ExceptionInjection {
+	public String[][] searchForAuthor(String user, boolean descendentOrder) throws ExceptionInjection {
 		
 		checkInjection(user);
 		

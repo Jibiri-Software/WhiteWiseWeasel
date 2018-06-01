@@ -32,7 +32,7 @@ public abstract class AbstractBDController {
         Returns a 2D-Array with all information from the database from @param user
         Can only be ordered by ascendant or descendant by date
      */
-    public abstract String[][] seachForAuthor(String user, boolean descendentOrder) throws ExceptionInjection;
+    public abstract String[][] searchForAuthor(String user, boolean descendentOrder) throws ExceptionInjection;
 
 
     protected String checkExactSearch(String s) {

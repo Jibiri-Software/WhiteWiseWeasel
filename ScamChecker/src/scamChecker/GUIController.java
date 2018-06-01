@@ -49,7 +49,7 @@ public class GUIController implements ActionListener {
 				String[][] data;
 				if (author) {
 					start = new Date().getTime();			
-					data = bd.seachForAuthor(msg, desc);
+					data = bd.searchForAuthor(msg, desc);
 					end = new Date().getTime();
 				} else if (!msg.equals("")) {
 					start = new Date().getTime();
