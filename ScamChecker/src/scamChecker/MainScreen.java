@@ -2,12 +2,12 @@ package scamChecker;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class View extends JFrame {
+public class MainScreen extends JFrame {
 	
 	public enum Fields { TITLE, DATE, DESCRIPTION, URL }
 	
@@ -27,8 +27,10 @@ public class View extends JFrame {
 	private JRadioButton author = new JRadioButton("Author");
 	private JLabel searchSelectLabel = new JLabel("Search by: ");
 	
-	private JTextField searchBox = new JTextField(30);
-	private JLabel searchBoxLabel = new JLabel("Introduce your search");
+	private JTextField searchBox = new JTextField(35);
+	private JLabel searchBoxLabel = new JLabel("Introduce your search:");
+	
+	private JButton addScam = new JButton("Add new scam");
 	
 	private ButtonGroup selectOrder = new ButtonGroup();
 	private JRadioButton asc = new JRadioButton("Ascendent");
@@ -40,11 +42,11 @@ public class View extends JFrame {
 	
 	private JLabel labelResults = new JLabel();
 		
-	public View() {
+	public MainScreen() {
 		
 		// TOP
 		
-		JPanel top = new JPanel(new BorderLayout());
+		JPanel top = new JPanel(new BorderLayout(15, 0));
 		 
 		selectSearch.add(content);
 		selectSearch.add(author);
@@ -52,15 +54,23 @@ public class View extends JFrame {
 		JPanel left = new JPanel(new GridLayout(3,1));
 		left.add(searchSelectLabel);
 		left.add(content);
-		left.add(author);
+		left.add(author);	
+		
+		
+		JPanel centerTopLeft = new JPanel(new FlowLayout());
+		centerTopLeft.add(searchBoxLabel);	
+		JPanel centerTopRight = new JPanel(new FlowLayout());
+		centerTopRight.add(addScam);
+		
+		JPanel centerTop = new JPanel(new BorderLayout());
+		centerTop.add(centerTopLeft, BorderLayout.LINE_START);
+		centerTop.add(centerTopRight, BorderLayout.LINE_END);		
+		JPanel centerBottom = new JPanel(new FlowLayout());
+		centerBottom.add(searchBox);
 		
 		JPanel center = new JPanel(new GridLayout(2,1));
-		JPanel topCenter = new JPanel(new FlowLayout());
-		topCenter.add(searchBoxLabel);
-		JPanel bottomCenter = new JPanel(new FlowLayout());
-		bottomCenter.add(searchBox);
-		center.add(topCenter);
-		center.add(bottomCenter);
+		center.add(centerTop);
+		center.add(centerBottom);
 		
 		selectOrder.add(asc);
 		selectOrder.add(desc);
@@ -110,6 +120,9 @@ public class View extends JFrame {
 		
 		content.addActionListener(ctr);
 		content.setActionCommand("CONTENT");
+		
+		addScam.addActionListener(ctr);
+		addScam.setActionCommand("NEWSCAM");
 	}
 	
 	public String getMessage() {
