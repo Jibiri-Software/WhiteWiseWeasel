@@ -10,13 +10,21 @@ import org.junit.jupiter.api.*;
 class TestScamChecker {
 
     static private AbstractBDController globaltest;
-    private static final int NUMOFENTRIES=105;
     private static String user = "root";
     private static String password = "";
 
+    private static int size;
+    private static int sizeClementine;
+    private static int sizeIn;
+    private static int sizeIn2;
+
     @BeforeAll
-    static void setUp() {
+    static void setUp() throws AbstractBDController.ExceptionInjection {
         globaltest = new BDController(user, password);
+        size = globaltest.allData()[0].length;
+        sizeClementine = globaltest.searchForAuthor("clementine", true)[0].length;
+        sizeIn =  globaltest.searchForCoincidence("in", false, false)[0].length;
+        sizeIn2 =  globaltest.searchForCoincidence("\"in\"", false, false)[0].length;
     }
 
     @AfterEach
@@ -61,7 +69,7 @@ class TestScamChecker {
             */
         System.out.println("Testing allData() which returns the total entries of the database; we expect 105 results");
         for (int i = 0; i < 5; i++) {
-            Assertions.assertEquals(NUMOFENTRIES, globaltest.allData()[i].length);
+            Assertions.assertEquals(size, globaltest.allData()[i].length);
         }
     }
 
@@ -76,7 +84,7 @@ class TestScamChecker {
         System.out.println("Testing searchForAuthor() with user clementine; we expect 2 results");
         try {
             for(int i=0; i<5; i++) {
-                Assertions.assertEquals(2, globaltest.searchForAuthor("clementine", true)[i].length);
+                Assertions.assertEquals(sizeClementine, globaltest.searchForAuthor("clementine", true)[i].length);
             }
         }catch(Exception e){
             Assertions.fail("Exception thrown");
@@ -93,8 +101,8 @@ class TestScamChecker {
         try{
             for(int i=0; i<5; i++)
             {
-                Assertions.assertEquals(85,globaltest.searchForCoincidence("in",true,false)[i].length);
-                Assertions.assertEquals(26,globaltest.searchForCoincidence("\"in\"",true,false)[i].length);
+                Assertions.assertEquals(sizeIn,globaltest.searchForCoincidence("in",true,false)[i].length);
+                Assertions.assertEquals(sizeIn2,globaltest.searchForCoincidence("\"in\"",true,false)[i].length);
             }
         }catch(Exception e){
             Assertions.fail("Exception thrown");
