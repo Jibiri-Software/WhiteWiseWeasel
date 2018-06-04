@@ -13,9 +13,10 @@ public class Driver {
 		String passwordMysql = args[1]; //INTRODUCE PASSWORD OF LOCAL MYSQL
 		
 		BDController bd = new BDController(userMysql, passwordMysql);
-		View v = new View();
+		MainScreen v = new MainScreen();
 		GUIController ctr = new GUIController(bd, v);
-		v.Controller(ctr);		
+		v.Controller(ctr);
+		
 	}
 	
 }

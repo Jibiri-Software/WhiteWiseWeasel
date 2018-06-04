@@ -10,12 +10,14 @@ import scamChecker.AbstractBDController.ExceptionInjection;
 public class GUIController implements ActionListener {
 	
 	private BDController bd;
-	private View v;
+	private MainScreen ms;
+	private ScamAddScreen sas;
 	private int totalScams;
 	
-	public GUIController(BDController bdc, View view) {
+	
+	public GUIController(BDController bdc, MainScreen view) {
 		bd = bdc;
-		v = view;
+		ms = view;
 		
 		String[][] data = bd.allData();
 		totalScams = data[0].length;
@@ -31,16 +33,16 @@ public class GUIController implements ActionListener {
 			
 			if (event.getActionCommand().equals("CONTENT")) {
 				
-				v.clearOrderOptions();
+				ms.clearOrderOptions();
 				
 			} else if (event.getActionCommand().equals("SEARCH")) {
 				
-				v.clearScreen();
-				asc = v.orderAsc();
-				desc = v.orderDesc();
-				author = v.searchOption();
-				v.clearOrderOptions();
-				String msg = v.getMessage();
+				ms.clearScreen();
+				asc = ms.orderAsc();
+				desc = ms.orderDesc();
+				author = ms.searchOption();
+				ms.clearOrderOptions();
+				String msg = ms.getMessage();
 				
 				long start;
 				long end;
@@ -62,13 +64,29 @@ public class GUIController implements ActionListener {
 				}
 				
 				printResults(data);
-				v.setResultLabel(data[0].length, totalScams, end - start);
+				ms.setResultLabel(data[0].length, totalScams, end - start);
 				
+			} else if (event.getActionCommand().equals("NEWSCAM")) {	
+			
+				sas = new ScamAddScreen();
+				sas.Controller(this);
+				
+			} else if (event.getActionCommand().equals("ADDSCAM")) {
+				
+				
+				String[] args = new String[4];
+				
+				args[0] = sas.getUser();
+				args[1] = sas.gettheTitle();
+				args[2] = sas.getDescription();
+				args[3] = sas.getUrl();
+				
+				sas.printMessage(bd.addScam(args));				
 			}
 			
 		} catch (ExceptionInjection e) {
 			
-			v.printScreen(e.getMessage());
+			ms.printScreen(e.getMessage());
 			
 		}
 		
@@ -77,11 +95,11 @@ public class GUIController implements ActionListener {
 	private void printResults(String[][] results) {
 		
 		for(int i = 0; i < results[0].length; i++) {
-			v.printScreen(results[Columns.TITLE.ordinal()][i]);
-			v.printScreen(results[Columns.USERNAME.ordinal()][i] + "\t" + results[Columns.DATE.ordinal()][i]);
-			v.printScreen(results[Columns.DESCRIPTION.ordinal()][i]);
-			v.printScreen(results[Columns.URL.ordinal()][i]);
-			v.printScreen("-------------------------");
+			ms.printScreen(results[Columns.TITLE.ordinal()][i]);
+			ms.printScreen(results[Columns.USERNAME.ordinal()][i] + "\t" + results[Columns.DATE.ordinal()][i]);
+			ms.printScreen(results[Columns.DESCRIPTION.ordinal()][i]);
+			ms.printScreen(results[Columns.URL.ordinal()][i]);
+			ms.printScreen("-------------------------");
 		}
 		
 	}

@@ -33,6 +33,18 @@ public abstract class AbstractBDController {
         Can only be ordered by ascendant or descendant by date
      */
     public abstract String[][] searchForAuthor(String user, boolean descendentOrder) throws ExceptionInjection;
+    
+    
+    /*
+	    Adds a scam into the database;
+	    It must receive 
+	    	0 - a user,
+	    	1 - a title,
+	    	2 - a description
+	    	3 - a url 
+     */
+    
+    public abstract String addScam(String[] args);
 
 
     protected String checkExactSearch(String s) {

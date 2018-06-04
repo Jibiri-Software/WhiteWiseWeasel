@@ -125,6 +125,83 @@ public class BDController extends AbstractBDController{
 		
 		return result;
 	}
+
+
+	@Override
+	public String addScam(String[] args) {
+		
+		
+		
+		try ( Statement stmt = conn.createStatement() ) {
+			
+			if (args[0].equals("")) {
+				return "User cannot be empty";
+			}
+			if (args[1].equals("")) {
+				return "Title cannot be empty";
+			}
+			
+			//getting the user id
+			
+			String query = "select id "
+					+ "from user "
+					+ "where username='" + args[0] + "';";		
+			
+			ResultSet rset = stmt.executeQuery(query);
+			
+			int numRows = numberOfRows(rset);
+			
+			if (numRows == 0) {
+
+				//user not found in database
+				
+				// add user
+				String insertQuery = "insert into user(username) "
+						+ "values('" + args[0] + "');";
+				
+				stmt.executeUpdate(insertQuery);
+				
+				// get the new userID
+						
+				rset = stmt.executeQuery(query);				
+			}	
+			
+			rset.first();
+			int userID = rset.getInt("id");
+			
+			//check if url is null
+			String addScam;
+			if (!args[3].equals("")) {
+				
+				addScam = "insert into scam(idauthor, title, description, url, dateadded) "
+						+ "values(" + userID + ", "
+						+ "'" + args[1] + "', "
+						+ "'" + args[2] + "', "
+						+ "'" + args[3] + "', "
+						+ "now());";
+				
+			} else {			
+			
+				
+				addScam = "insert into scam(idauthor, title, description, dateadded) "
+						+ "values(" + userID + ", "
+						+ "'" + args[1] + "', "
+						+ "'" + args[2] + "', "
+						+ "now());";
+			}
+			
+			// add the scam
+			stmt.executeUpdate(addScam);
+			
+			
+		} catch (SQLException ex) {
+			
+			return "SQLException: " + ex.getMessage();
+		}
+		
+		return "Scam has been added successfully";
+		
+	}
 	
 
 		
